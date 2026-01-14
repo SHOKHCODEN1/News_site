@@ -36,3 +36,11 @@ def home_page_view(request):
 def contact_us(request):
     context = {}
     return render(request, 'contact.html' , context)
+
+def about_us(request):
+    context = {}
+    return render(request, 'about.html' , context)
+
+def page_404(request):
+    context = {}
+    return render(request, '404.html' , context)
