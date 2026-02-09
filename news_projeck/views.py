@@ -4,6 +4,10 @@ from .forms import ContactForm
 from .models import News , Category
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
+from django.views.generic import UpdateView , DeleteView , CreateView
+from django.urls import reverse_lazy
+
+
     
 
 def news_list(request):
@@ -65,7 +69,6 @@ def contact_us(request):
         form.save()
         return HttpResponse("Xabaringiz yuborildi!")
     return render(request, 'contact.html', {"form": form})
-    return render(request, 'contact.html' , context)
 
 
 def about_us(request):
@@ -75,3 +78,30 @@ def about_us(request):
 def page_404(request):
     context = {}
     return render(request, '404.html' , context)
+
+
+class EditView(UpdateView):
+    model = News
+    template_name = 'crud/news_edit.html'
+    form_class = ContactForm
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['news'] = News.objects.all()
+        return context
+
+class DeleteNewsView(DeleteView):
+    model = News
+    template_name = 'crud/delete.html'
+    context_object_name = 'yangilik'
+    success_url = reverse_lazy('home_page_view')
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['news'] = News.objects.all()
+        return context
+
+class CreateNewView(CreateView):
+    model = News
+    template_name = 'crud/create.html'
+    fields = ('title', 'slug' , 'img' ,'body' , 'category' , 'status')

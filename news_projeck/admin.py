@@ -10,3 +10,4 @@ class NewsAdmin(admin.ModelAdmin):
     list_display = ['title' , 'slug']
     list_filter = ['status']
     search_fields = ['title']
+    prepopulated_fields = {'slug': ('title',)}

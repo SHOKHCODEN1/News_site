@@ -9,6 +9,12 @@
 <h3>{{new.body}}</h3>
 <h3>Category : {{ new.category }}</h3>
 <img src="{{ new.img.url }}" width="100% ">
+<div style="display: flex; align-items: center; justify-content: space-between; margin: 10px 45px;">
+    <a href="{% url 'news_edit' new.slug %}"><button  style="margin-top: 15px; border: none; background-color: lime; color: white; padding: 10px 15px;">TAHRIRLASH</button></a>
+    <a href="{% url 'news_create' %}"><button  style="margin-top: 15px; border: none; background-color: dodgerblue; color: white; padding: 10px 15px;">YARATISH</button></a>
+    <a href="{% url 'news_delete' new.slug %}"><button style="margin-top: 15px; border: none; background-color: black; color: white; padding: 10px 15px;">O'chirish</button></a>
+</div>
+
 <h3>Quyilgan kun:  {{new.created_at}}</h3>
 
 {% endblock content %}
