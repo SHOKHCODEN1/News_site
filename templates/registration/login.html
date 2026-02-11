@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>SAYTGA KIRISH!</h2>
+<form method="post" enctype="multipart/form-data" action="">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>KIRISH</button>
+</form>
+{% endblock content %}

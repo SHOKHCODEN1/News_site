@@ -24,7 +24,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    'account',
     'news_projeck',   # sizning app
 ]
 
@@ -99,7 +99,7 @@ USE_TZ = True
 # =======================
 
 STATIC_URL = '/static/'
-
+LOGIN_REDIRECT_URL = 'home_page_view'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
